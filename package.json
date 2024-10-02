@@ -3,7 +3,7 @@
   "displayName": "pint°",
   "description": "The pint° programming language",
   "publisher": "mateusfccp",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "icon": "static/icon.png",
   "engines": {
     "vscode": "^1.92.0"

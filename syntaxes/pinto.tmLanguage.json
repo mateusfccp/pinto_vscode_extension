@@ -6,6 +6,9 @@
         },
         {
             "include": "#keywords"
+        },
+        {
+            "include": "#literals"
         }
     ],
     "repository": {
@@ -32,65 +35,60 @@
                             "name": "keyword.other.import.pinto"
                         },
                         "2": {
-                            "name": "entity.name.section"
+                            "name": "entity.name.section.pinto"
                         }
                     }
                 },
                 {
-                    "include": "#type"
-                }
-            ]
-        },
-        "type": {
-            "patterns": [
-                {
-                    "match": "(type)\\s+([A-Za-z$_][A-Za-z0-9$_]*)\\s*(?:\\(\\s*([A-Za-z$_][A-Za-z0-9$_]*)\\s*(?:,\\s*([A-Za-z$_][A-Za-z0-9$_]*)\\s*)?\\))?",
-                    "captures": {
-                        "1": {
-                            "name": "keyword.declaration.pinto"
-                        },
-                        "2": {
-                            "name": "entity.name.type.pinto"
-                        },
-                        "3": {
-                            "name": "entity.name.type.pinto"
-                        },
-                        "4": {
-                            "name": "entity.name.type.pinto"
-                        }
-                    }
+                    "match": "let",
+                    "name": "storage.type.pinto"
                 },
                 {
                     "match": "type",
-                    "name": "keyword.declaration.pinto"
-                },
-                {
-                    "include": "#type-variant"
+                    "name": "storage.type.pinto"
                 }
             ]
         },
-        "type-variant": {
-            "match": "([A-Za-z$_][A-Za-z0-9$_]*)\\s*(?:\\(\\s*([A-Za-z$_][A-Za-z0-9$_]*)\\s+([A-Za-z$_][A-Za-z0-9$_]*)\\s*(?:,\\s*([A-Za-z$_][A-Za-z0-9$_]*)\\s+([A-Za-z$_][A-Za-z0-9$_]*)\\s*)?\\))?",
-            "captures": {
-                "1": {
-                    "name": "entity.name.type.pinto"
+        "literals": {
+            "patterns": [
+                {
+                    "include": "#boolean-literal"
                 },
-                "2": {
-                    "name": "entity.name.type.pinto"
+                {
+                    "include": "#number-literal"
                 },
-                "3": {
-                    "name": "variable.parameter.pinto"
-                },
-                "4": {
-                    "name": "entity.name.type.pinto"
-                },
-                "5": {
-                    "name": "variable.parameter.pinto"
+                {
+                    "include": "#string-literal"
                 }
-            }
+            ]
         },
         "identifier": {
-            "match": "\\b[A-Za-z$_][A-Za-z0-9$_]*\\b"
+            "match": "[A-Za-z$_][A-Za-z0-9$_]*",
+            "name": "variable.pinto"
+        },
+        "boolean-literal": {
+            "match": "(?:true|false)",
+            "name": "constant.language.pinto"
+        },
+        "number-literal": {
+            "patterns": [
+                {
+                    "match": "(?:[0-9]+(?:_*[0-9]+)*)+\\.(?:[0-9]+(?:_*[0-9]+)*)+",
+                    "name": "constant.numeric.double.pinto"
+                },
+                {
+                    "match": "(?:[0-9]+(?:_*[0-9]+)*)+",
+                    "name": "constant.numeric.integer.pinto"
+                }
+            ]
+        },
+        "string-literal": {
+            "patterns": [
+                {
+                    "match": "\"[^\\n]+\"",
+                    "name": "string.quoted.pinto"
+                }
+            ]
         }
     }
 }
